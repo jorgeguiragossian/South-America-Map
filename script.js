@@ -4,7 +4,12 @@ d3.json("south-america.geo.json").then(function(data) {
                   .attr("width", 960)
                   .attr("height", 600);
 
-    const projection = d3.geoMercator();
+    // Adjusted projection settings
+    const projection = d3.geoMercator()
+                         .scale(400) // Adjust scale as needed
+                         .center([-60, -15]) // Adjust center coordinates as needed
+                         .translate([480, 300]); // Adjust to center the map in the SVG
+
     const pathGenerator = d3.geoPath().projection(projection);
 
     svg.selectAll("path")
@@ -39,4 +44,3 @@ d3.json("south-america.geo.json").then(function(data) {
         }
     }
 });
-
